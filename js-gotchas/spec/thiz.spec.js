@@ -37,6 +37,16 @@ describe('This', () => {
       const boundAge = age.bind({props: {age:3}});
       expect(boundAge()).to.eql(3);
     });
+
+    it('using "this", keeping a reference to a function depending on this', () => {
+      // inline this function to see the test fail
+      const state = modul.withThisUsingNewFunctionSyntax().age;
+
+      tryCatch({
+        test: () => expect(state()).to.eql(undefined),
+        assertion: (exception) => expect(exception.message).to.contain('Cannot read property'),
+        failure: () => 'Should have thrown an exception'});
+    });
   });
 });
 
