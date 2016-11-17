@@ -22,4 +22,11 @@ describe('Array\'s functional features', () => {
       expect(modul.mapWithIndex(arrayNumbers, (element, index) => index)).to.eql([0,1,2,3,4]);
     });
   });
+
+  describe('reduce / fold / foldl', () => {
+    it('applies the function to the previous result and the current element', () => {
+      expect(modul.reduce({array: arrayNumbers, function_:(element, accumulator) => element + accumulator})).to.eql(1+2+3+4+5);
+    });
+
+  });
 });

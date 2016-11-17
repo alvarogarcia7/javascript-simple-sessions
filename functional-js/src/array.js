@@ -2,7 +2,8 @@
 
 module.exports = {
   mapWithoutIndex,
-  mapWithIndex
+  mapWithIndex,
+  reduce
 };
 
 function mapWithoutIndex(array, function_) {
@@ -11,4 +12,8 @@ function mapWithoutIndex(array, function_) {
 
 function mapWithIndex(array, function_) {
   return array.map((element,index) => function_(element,index));
+}
+
+function reduce({array, function_}) {
+  return array.reduce(function_);
 }
