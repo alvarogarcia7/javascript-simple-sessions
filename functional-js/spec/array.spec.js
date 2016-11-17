@@ -31,7 +31,7 @@ describe('Array\'s functional features', () => {
 
     it('with reduce you can also perform the map operation', () => {
       const append = (accumulator, element) => {accumulator.push(element); return accumulator;};
-      expect(modul.reduce({array: arrayNumbers, function_: append, default_:[]})).to.eql([1,2,3,4,5]);
+      expect(modul.reduce({array: arrayNumbers, function_: append, default_:[]})).to.eql(arrayNumbers);
     });
 
     it('reduce does not always respect the shape of the operator', () => {
