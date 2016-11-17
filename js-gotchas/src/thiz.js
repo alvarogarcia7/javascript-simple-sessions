@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = {noThis};
+module.exports = {noThis,withThis};
 
 function noThis() {
   const state = {
@@ -8,5 +8,14 @@ function noThis() {
   };
   return {
     state: () => state.age
+  };
+}
+
+function withThis() {
+  return {
+    props: {
+      age:1
+    },
+    state: function () { return this.props.age;}
   };
 }
