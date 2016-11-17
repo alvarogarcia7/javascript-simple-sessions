@@ -4,7 +4,7 @@ const chai = require('chai');
 const expect = chai.expect;
 chai.config.includeStack = true;
 
-const modul = require('./../src/retoorn');
+const modul = require('./../src/newline');
 
 describe('Return', () => {
   describe('be careful with newlines', () => {
