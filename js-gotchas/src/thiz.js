@@ -4,7 +4,8 @@ module.exports = {
   noThis,
   withThisUsingOldFunctionSyntax,
   withThisUsingNewFunctionSyntax,
-  sum1To
+  sum1To,
+  boundSum1To
 };
 
 function noThis() {
@@ -37,6 +38,15 @@ function withThisUsingNewFunctionSyntax() {
 function sum1To(b) {
   this.a = 1;
   return sumToA(b);
+
+  function sumToA(b) {
+    return this.a + b;
+  }
+}
+
+function boundSum1To(b) {
+  this.a = 1;
+  return sumToA.bind(this)(b);
 
   function sumToA(b) {
     return this.a + b;

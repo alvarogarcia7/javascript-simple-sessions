@@ -55,6 +55,9 @@ describe('This', () => {
         failure: () => 'Should have thrown an exception'});
     });
 
+    it('context is lost inside another function, but you can bind it', () => {
+      expect(modul.boundSum1To(2)).to.eql(3);
+    });
   });
 
   describe('can be bound', () => {
