@@ -30,8 +30,8 @@ describe('Array\'s functional features', () => {
     });
 
     it('with reduce you can also perform the map operation', () => {
-      const identity = (accumulator, element) => {accumulator.push(element); return accumulator;};
-      expect(modul.reduce({array: arrayNumbers, function_: identity, default_:[]})).to.eql([1,2,3,4,5]);
+      const append = (accumulator, element) => {accumulator.push(element); return accumulator;};
+      expect(modul.reduce({array: arrayNumbers, function_: append, default_:[]})).to.eql([1,2,3,4,5]);
     });
 
   });
