@@ -3,7 +3,8 @@
 module.exports = {
   noThis,
   withThisUsingOldFunctionSyntax,
-  withThisUsingNewFunctionSyntax
+  withThisUsingNewFunctionSyntax,
+  sum1To
 };
 
 function noThis() {
@@ -31,4 +32,13 @@ function withThisUsingNewFunctionSyntax() {
     },
     age: () => this.props.age
   };
+}
+
+function sum1To(b) {
+  this.a = 1;
+  return sumToA(b);
+
+  function sumToA(b) {
+    return this.a + b;
+  }
 }

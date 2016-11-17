@@ -47,6 +47,14 @@ describe('This', () => {
         assertion: (exception) => expect(exception.message).to.contain('Cannot read property'),
         failure: () => 'Should have thrown an exception'});
     });
+
+    it('context is lost inside another function', () => {
+      tryCatch({
+        test: () => expect(modul.sum1To(2)).to.eql(3),
+        assertion: (exception) => expect(exception.message).to.contain('Cannot read property'),
+        failure: () => 'Should have thrown an exception'});
+    });
+
   });
 
   describe('can be bound', () => {
