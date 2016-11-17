@@ -28,10 +28,9 @@ describe('This', () => {
         // inline this function to see the test fail
         const state = modul.withThisUsingOldFunctionSyntax().age;
 
-        tryCatch({
-          test: () => expect(state()).to.eql(undefined),
-          assertion: (exception) => expect(exception.message).to.contain('Cannot read property'),
-          failure: () => 'Should have thrown an exception'});
+        mustFailBecauseItCannotFindAProperty(
+          () => expect(state()).to.eql(undefined)
+        );
       });
 
       it('using "this", keeping a reference to a function depending on this + injecting the context', () => {
@@ -43,10 +42,9 @@ describe('This', () => {
 
     describe('inside another function', () => {
       it('context is lost', () => {
-        tryCatch({
-          test: () => expect(modul.sum1To(2)).to.eql(3),
-          assertion: (exception) => expect(exception.message).to.contain('Cannot read property'),
-          failure: () => 'Should have thrown an exception'});
+        mustFailBecauseItCannotFindAProperty(
+          () => expect(modul.sum1To(2)).to.eql(3)
+        );
       });
 
       it('context is lost, but you can bind it', () => {
@@ -64,6 +62,14 @@ describe('This', () => {
     });
   });
 });
+
+function mustFailBecauseItCannotFindAProperty(test) {
+  tryCatch({
+    test,
+    assertion: (exception) => expect(exception.message).to.contain('Cannot read property'),
+    failure: () => 'Should have thrown an exception'});
+}
+
 
 function tryCatch({test, assertion, failure}) {
   let exception = undefined;
