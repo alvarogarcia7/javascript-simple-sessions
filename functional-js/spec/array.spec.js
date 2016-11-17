@@ -29,5 +29,10 @@ describe('Array\'s functional features', () => {
       expect(modul.reduce({array: arrayNumbers, function_: sum})).to.eql(1+2+3+4+5);
     });
 
+    it('with reduce you can also perform the map operation', () => {
+      const identity = (accumulator, element) => {accumulator.push(element); return accumulator;};
+      expect(modul.reduce({array: arrayNumbers, function_: identity, default_:[]})).to.eql([1,2,3,4,5]);
+    });
+
   });
 });
