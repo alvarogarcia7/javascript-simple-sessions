@@ -35,6 +35,12 @@ describe('Array\'s functional features', () => {
     });
 
     it('reduce does not always respect the shape of the operator', () => {
+      /**
+       * Appends the maximum of the previous elements and the current element
+       * @param accumulator: [Int], previous elements
+       * @param element: Int, current element
+       * @returns [Int]
+       */
       const maxUpToCurrent = (accumulator, element) => {
         const previousAccumulatedMax = Math.max.apply(null, accumulator);
         const currentMax = Math.max(element, previousAccumulatedMax);
