@@ -23,6 +23,7 @@ describe('This', () => {
     });
 
     it('using "this", keeping a reference to a function depending on this', () => {
+      // inline this function to see the test fail
       const state = modul.withThis().age;
 
       tryCatch({
