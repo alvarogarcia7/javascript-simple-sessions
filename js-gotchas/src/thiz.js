@@ -3,11 +3,11 @@
 module.exports = {noThis,withThis};
 
 function noThis() {
-  const state = {
+  const props = {
     age: 1
   };
   return {
-    age: () => state.age
+    age: () => props.age
   };
 }
 
