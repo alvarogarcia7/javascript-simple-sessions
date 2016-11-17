@@ -34,5 +34,15 @@ describe('Array\'s functional features', () => {
       expect(modul.reduce({array: arrayNumbers, function_: append, default_:[]})).to.eql([1,2,3,4,5]);
     });
 
+    it('reduce does not always respect the shape of the operator', () => {
+      const maxUpToCurrent = (accumulator, element) => {
+        const previousAccumulatedMax = Math.max.apply(null, accumulator);
+        const currentMax = Math.max(element, previousAccumulatedMax);
+        accumulator.push(currentMax);
+        return accumulator;
+      };
+      expect(modul.reduce({array: [1,2,1,3,1], function_: maxUpToCurrent, default_:[]})).to.eql([1,2,2,3,3]);
+    });
+
   });
 });
