@@ -25,7 +25,7 @@ describe('This', () => {
       });
 
       it('using "this", keeping a reference to a function depending on this', () => {
-        // inline this function to see the test fail
+        // inline this function to see the test fail (the code will succeed, but the test won't)
         const state = modul.withThisUsingOldFunctionSyntax().age;
 
         mustFailBecauseItCannotFindAProperty(
