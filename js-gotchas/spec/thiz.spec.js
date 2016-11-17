@@ -48,6 +48,14 @@ describe('This', () => {
         failure: () => 'Should have thrown an exception'});
     });
   });
+
+  describe('can be bound', () => {
+    it('using the function "bind"', () => {
+      const age = modul.withThisUsingOldFunctionSyntax().age;
+      const boundAge = age.bind({props: {age:99}});
+      expect(boundAge()).to.eql(99);
+    });
+  });
 });
 
 function tryCatch({test, assertion, failure}) {
