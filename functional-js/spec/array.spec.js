@@ -17,5 +17,9 @@ describe('Array\'s functional features', () => {
     it('respects the number of elements of the array, applying a function to each element', () => {
       expect(modul.mapWithoutIndex(arrayNumbers, (element) => [element, element+1])).to.eql([[1,2],[2,3],[3,4],[4,5],[5,6]]);
     });
+
+    it('can also use the index', () => {
+      expect(modul.mapWithIndex(arrayNumbers, (element, index) => index)).to.eql([0,1,2,3,4]);
+    });
   });
 });
