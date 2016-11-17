@@ -33,9 +33,9 @@ describe('This', () => {
     });
 
     it('using "this", keeping a reference to a function depending on this + injecting the context', () => {
-      const state = modul.withThis().age;
-      const boundState = state.bind({props: {age:3}});
-      expect(boundState()).to.eql(3);
+      const age = modul.withThis().age;
+      const boundAge = age.bind({props: {age:3}});
+      expect(boundAge()).to.eql(3);
     });
   });
 });
