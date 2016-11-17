@@ -1,6 +1,10 @@
 'use strict';
 
-module.exports = {noThis,withThisUsingOldFunctionSyntax,withThisUsingNewFunctionSyntax};
+module.exports = {
+  noThis,
+  withThisUsingOldFunctionSyntax,
+  withThisUsingNewFunctionSyntax
+};
 
 function noThis() {
   const props = {
