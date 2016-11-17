@@ -1,4 +1,4 @@
-# Contents of this session - TODO
+# Functional Javascript
 
 See parent [README](../README.md)
 
