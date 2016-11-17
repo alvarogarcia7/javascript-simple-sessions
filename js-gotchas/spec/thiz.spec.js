@@ -31,6 +31,12 @@ describe('This', () => {
         assertion: (exception) => expect(exception.message).to.contain('Cannot read property'),
         failure: () => 'Should have thrown an exception'});
     });
+
+    it('using "this", keeping a reference to a function depending on this + injecting the context', () => {
+      const state = modul.withThis().age;
+      const boundState = state.bind({props: {age:3}});
+      expect(boundState()).to.eql(3);
+    });
   });
 });
 
