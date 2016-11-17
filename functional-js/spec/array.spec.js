@@ -25,7 +25,8 @@ describe('Array\'s functional features', () => {
 
   describe('reduce / fold / foldl', () => {
     it('applies the function to the previous result and the current element', () => {
-      expect(modul.reduce({array: arrayNumbers, function_:(element, accumulator) => element + accumulator})).to.eql(1+2+3+4+5);
+      const sum = (element, accumulator) => element + accumulator;
+      expect(modul.reduce({array: arrayNumbers, function_: sum})).to.eql(1+2+3+4+5);
     });
 
   });
