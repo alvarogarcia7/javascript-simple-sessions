@@ -10,20 +10,20 @@ const modul = require('./../src/thiz');
 describe('This', () => {
   describe('depends on the context', () => {
     it('not using "this"', () => {
-      expect(modul.noThis().state()).to.eql(1);
+      expect(modul.noThis().age()).to.eql(1);
     });
 
     it('using "this", directly', () => {
-      expect(modul.withThis().state()).to.eql(1);
+      expect(modul.withThis().age()).to.eql(1);
     });
 
     it('using "this", keeping a reference to the whole object', () => {
       const withThis = modul.withThis();
-      expect(withThis.state()).to.eql(1);
+      expect(withThis.age()).to.eql(1);
     });
 
     it('using "this", keeping a reference to a function depending on this', () => {
-      const state = modul.withThis().state;
+      const state = modul.withThis().age;
 
       let exception = undefined;
       try {

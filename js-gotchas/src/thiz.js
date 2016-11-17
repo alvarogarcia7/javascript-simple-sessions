@@ -7,7 +7,7 @@ function noThis() {
     age: 1
   };
   return {
-    state: () => state.age
+    age: () => state.age
   };
 }
 
@@ -16,6 +16,6 @@ function withThis() {
     props: {
       age:1
     },
-    state: function () { return this.props.age;}
+    age: function () { return this.props.age;}
   };
 }
