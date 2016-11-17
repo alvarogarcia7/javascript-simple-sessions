@@ -25,17 +25,24 @@ describe('This', () => {
     it('using "this", keeping a reference to a function depending on this', () => {
       const state = modul.withThis().age;
 
-      let exception = undefined;
-      try {
-        expect(state()).to.eql(undefined);
-      } catch (e) {
-        exception = e;
-        expect(exception.message).to.contain('Cannot read property');
-      } finally {
-        if (exception === undefined) {
-          should.fail('Should have thrown an exception');
-        }
-      }
+      tryCatch({
+        test: () => expect(state()).to.eql(undefined),
+        assertion: (exception) => expect(exception.message).to.contain('Cannot read property'),
+        failure: () => 'Should have thrown an exception'});
     });
   });
 });
+
+function tryCatch({test, assertion, failure}) {
+  let exception = undefined;
+  try {
+    test();
+  } catch (e) {
+    exception = e;
+    assertion(exception);
+  } finally {
+    if (exception === undefined) {
+      should.failure(failure);
+    }
+  }
+}
