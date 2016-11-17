@@ -14,17 +14,17 @@ describe('This', () => {
     });
 
     it('using "this", directly', () => {
-      expect(modul.withThis().age()).to.eql(1);
+      expect(modul.withThisUsingOldFunctionSyntax().age()).to.eql(1);
     });
 
     it('using "this", keeping a reference to the whole object', () => {
-      const withThis = modul.withThis();
+      const withThis = modul.withThisUsingOldFunctionSyntax();
       expect(withThis.age()).to.eql(1);
     });
 
     it('using "this", keeping a reference to a function depending on this', () => {
       // inline this function to see the test fail
-      const state = modul.withThis().age;
+      const state = modul.withThisUsingOldFunctionSyntax().age;
 
       tryCatch({
         test: () => expect(state()).to.eql(undefined),
@@ -33,7 +33,7 @@ describe('This', () => {
     });
 
     it('using "this", keeping a reference to a function depending on this + injecting the context', () => {
-      const age = modul.withThis().age;
+      const age = modul.withThisUsingOldFunctionSyntax().age;
       const boundAge = age.bind({props: {age:3}});
       expect(boundAge()).to.eql(3);
     });
