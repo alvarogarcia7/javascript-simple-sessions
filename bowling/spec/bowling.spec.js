@@ -11,5 +11,8 @@ describe('Bowling', () => {
     it('only 9 pins', () => {
       expect(modul.score('9-')).to.equal(9);
     });
+    it('only 10 pins', () => {
+      expect(modul.score('91')).to.equal(10);
+    });
   });
 });
