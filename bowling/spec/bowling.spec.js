@@ -22,5 +22,8 @@ describe('Bowling', () => {
     it('including a spare', () => {
       expect(modul.score('9/12')).to.equal(14);
     });
+    it('including a spare in last roll', () => {
+      expect(modul.score('9-8/')).to.equal(19);
+    });
   });
 });
