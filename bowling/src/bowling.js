@@ -28,6 +28,6 @@ function spare(rolls, currentIndex) {
   return result;
 
   function areThereMoreRolls() {
-    return currentIndex < rolls.length;
+    return currentIndex < (rolls.length -1);
   }
 }
