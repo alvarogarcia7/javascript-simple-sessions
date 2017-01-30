@@ -19,9 +19,11 @@ function score(rolls) {
 }
 
 function spare (rolls, currentIndex) {
-  var result = 10 - Number(rolls[currentIndex - 1]);
+  var previousRoll = rolls[currentIndex - 1];
+  var result = 10 - Number(previousRoll);
   if(currentIndex < rolls.length){
-    result += Number(rolls[currentIndex + 1]);
+    var nextRoll = rolls[currentIndex + 1];
+    result += Number(nextRoll);
   }
   return result;
 }
