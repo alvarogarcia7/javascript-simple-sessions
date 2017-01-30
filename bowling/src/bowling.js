@@ -7,14 +7,15 @@ module.exports = {
 function score(rolls) {
   return rolls.split('').reduce((acc, char, currentIndex) => {
     const currentRoll = Number(char);
-    if (!isNaN(currentRoll)) {
-      return currentRoll + acc;
-    } else {
-      if (char==='/') {
+    if (isNaN(currentRoll)) {
+      if (char === '/') {
         return acc + spare(rolls, currentIndex);
       }
       return acc;
-    }}, 0);
+    } else {
+      return currentRoll + acc;
+    }
+  }, 0);
 }
 
 function spare (rolls, currentIndex) {
