@@ -1,13 +1,9 @@
 'use strict';
 
 module.exports = {
-  publicfn
+  score
 };
 
-function publicfn(){
-  console.log('HELLO')
-}
-
-function privatefn(){
-  console.log('BYEBYE')
+function score(rolls){
+   return 9;
 }
