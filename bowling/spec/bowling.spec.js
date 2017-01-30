@@ -15,4 +15,9 @@ describe('Bowling', () => {
       expect(modul.score('91')).to.equal(10);
     });
   });
+  describe('calculates scores for multiple rolls', () => {
+    it('including a spare', () => {
+      expect(modul.score('9/12')).to.equal(14);
+    });
+  });
 });
