@@ -18,16 +18,16 @@ function score(rolls) {
   }, 0);
 }
 
-function spare (rolls, currentIndex) {
-  var previousRoll = rolls[currentIndex - 1];
-  var result = 10 - Number(previousRoll);
-  if(areThereMoreRolls()){
-    var nextRoll = rolls[currentIndex + 1];
+function spare(rolls, currentIndex) {
+  const previousRoll = rolls[currentIndex - 1];
+  let result = 10 - Number(previousRoll);
+  if (areThereMoreRolls()) {
+    const nextRoll = rolls[currentIndex + 1];
     result += Number(nextRoll);
   }
   return result;
 
-  function areThereMoreRolls () {
+  function areThereMoreRolls() {
     return currentIndex < rolls.length;
   }
 }
