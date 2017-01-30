@@ -14,6 +14,9 @@ describe('Bowling', () => {
     it('only 10 pins', () => {
       expect(modul.score('91')).to.equal(10);
     });
+    it('including a spare in last roll', () => {
+      expect(modul.score('8/')).to.equal(10);
+    });
   });
   describe('calculates scores for multiple rolls', () => {
     it('including a spare', () => {
