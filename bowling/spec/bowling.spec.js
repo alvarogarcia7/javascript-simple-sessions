@@ -17,6 +17,9 @@ describe('Bowling', () => {
     it('including a spare in last roll', () => {
       expect(modul.score('8/')).to.equal(10);
     });
+    it('including a strike', () => {
+      expect(modul.score('+X+')).to.equal(10);
+    });
   });
   describe('calculates scores for multiple rolls', () => {
     it('including a spare', () => {
