@@ -29,7 +29,7 @@ describe('Bowling', () => {
       expect(modul.score('9-8/')).to.equal(19);
     });
     it('including a strike, but a miss on the second throw', () => {
-      expect(modul.score('+X+9-')).to.equal(28);
+      expect(modul.score('+X+9-')).to.equal(10+9+9);
     });
   });
 });
