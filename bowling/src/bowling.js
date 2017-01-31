@@ -5,7 +5,7 @@ module.exports = {
 };
 
 function score(rolls) {
-  return toFrames(rolls).reduce((acc, char, currentIndex) => {
+  return toRolls(rolls).reduce((acc, char, currentIndex) => {
     const currentRoll = Number(char);
     if (isNaN(currentRoll)) {
       if (char === '/') {
@@ -57,10 +57,10 @@ function spare(rolls, currentIndex) {
   }
 }
 
-function toFrames(rolls) {
+function toRolls(rolls) {
   return rolls.split('');
 }
 
-function addTo(frame, accumulated) {
-  return frame + accumulated;
+function addTo(roll, accumulated) {
+  return roll + accumulated;
 }
