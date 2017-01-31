@@ -11,11 +11,18 @@ function score(rolls) {
       if (char === '/') {
         return acc + spare(rolls, currentIndex);
       }
+      if (char === 'X') {
+        return acc + strike(rolls, currentIndex);
+      }
       return acc;
     } else {
       return currentRoll + acc;
     }
   }, 0);
+}
+
+function strike() {
+  return 10;
 }
 
 function spare(rolls, currentIndex) {
