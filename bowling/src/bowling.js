@@ -51,20 +51,18 @@ function strike() {
 function spare(rolls, currentIndex) {
   const previousRoll = rolls[currentIndex - 1];
   let result = 10 - Number(previousRoll);
-  if (areThereMoreRolls()) {
-    const nextRoll = rolls[currentIndex + 1];
-    result = addTo(Number(nextRoll), result);
-  }
 
   return {
     score: function () {
       return result;
+    },
+    modifier: function () {
+      if (this.next) {
+        result = addTo(this.next.score(), result);
+      }
+      return this;
     }
   };
-
-  function areThereMoreRolls() {
-    return currentIndex < (rolls.length -1);
-  }
 }
 
 function toRolls(rollsRepresentation) {
