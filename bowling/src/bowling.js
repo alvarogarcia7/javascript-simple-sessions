@@ -66,12 +66,16 @@ function toRolls(rollsRepresentation) {
     i += increment;
   }
 
-  for (let i=0; i<rolls.length-1; i++) {
-    rolls[i].next = rolls[i+1];
-  }
-  rolls[rolls.length-1].next = undefined;
+  linkRolls();
 
   return rolls;
+
+  function linkRolls() {
+    for (let i = 0; i < rolls.length - 1; i++) {
+      rolls[i].next = rolls[i + 1];
+    }
+    rolls[rolls.length - 1].next = undefined;
+  }
 }
 function aNewRoll(rolls, char, currentIndex) {
   let currentRoll = undefined;
