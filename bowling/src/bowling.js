@@ -6,22 +6,21 @@ module.exports = {
 
 function score(rolls) {
   return toRolls(rolls).reduce((acc, currentRoll) => {
-    return addTo(currentRoll.score(), acc);
+    if(currentRoll['rollModifier']) {
+      return addTo(currentRoll.rollModifier().score(), acc);
+    } else {
+      return addTo(currentRoll.score(), acc);
+    }
   }, 0);
 }
 
-function noop() {
+function simpleThrow(firstThrow, secondThrow) {
   return {
     score: function () {
-      return 0;
-    }
-  };
-}
-
-function simpleRoll(rollRepresentation) {
-  return {
-    score: function () {
-      return Number(rollRepresentation);
+      return Number(firstThrow) + Number(secondThrow);
+    },
+    rollModifier: function () {
+      return this;
     }
   };
 }
@@ -42,6 +41,12 @@ function strike(rolls, currentIndex) {
   return {
     score: function () {
       return result;
+    },
+    rollModifier: function () {
+      if (this.next) {
+        result = addTo(this.next.score(), result);
+      }
+      return this;
     }
   };
 
@@ -75,30 +80,48 @@ function spare(rolls, currentIndex) {
 
 function toRolls(rollsRepresentation) {
   const rolls = [];
+  let previousThrow = undefined;
   for (let i=0; i<rollsRepresentation.length;) {
-    const [roll, increment] = aNewRoll(rollsRepresentation, rollsRepresentation[i], i);
-    rolls.push(roll);
+    const [throww, increment] = aNewThrow(rollsRepresentation, rollsRepresentation[i], i);
+    if (throww) {
+      if(!previousThrow){
+        previousThrow = throww;
+      } else {
+        rolls.push(roll(previousThrow, throww));
+        previousThrow = undefined;
+      }
+    }
     i += increment;
   }
 
+  for(let i=0; i<rolls.length-1; i++) {
+    rolls[i].next = rolls[i+1];
+  }
+
   return rolls;
-
-
 }
-function aNewRoll(rolls, char, currentIndex) {
-  let currentRoll = noop();
+
+function roll(firstThrow, secondThrow) {
+  return {
+    score: function() {
+      addTo(firstThrow.score(), secondThrow.score());
+    }
+  }
+}
+
+function aNewThrow(rolls, char, currentIndex) {
+  let currentThrow = undefined;
   let increment = 1;
   if (isNaN(Number(char))) {
     if (char === '/') {
-      currentRoll = spare(rolls, currentIndex);
+      currentThrow = spare(rolls, currentIndex);
     } else if (char === 'X') {
-      currentRoll = strike(rolls, currentIndex);
-      increment = 2;
+      currentThrow = strike(rolls, currentIndex);
     }
   } else {
-    currentRoll = simpleRoll(char);
+    currentThrow = simpleThrow(char);
   }
-  return [currentRoll, increment];
+  return [currentThrow, increment];
 }
 
 function addTo(roll, accumulated) {
