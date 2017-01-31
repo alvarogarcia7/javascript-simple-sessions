@@ -6,12 +6,12 @@ module.exports = {
 
 function score(rolls) {
   return toRolls(rolls).reduce((acc, char, currentIndex) => {
-    let currentRoll = noop();
-    currentRoll = aNewRoll(char, currentRoll, currentIndex);
+    const currentRoll = aNewRoll(char, currentIndex);
     return addTo(currentRoll.score(), acc);
   }, 0);
 
-  function aNewRoll(char, currentRoll, currentIndex) {
+  function aNewRoll(char, currentIndex) {
+    let currentRoll = noop();
     if (isNaN(Number(char))) {
       if (char === '/') {
         currentRoll = spare(rolls, currentIndex);
