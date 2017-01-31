@@ -7,6 +7,12 @@ chai.config.includeStack = true;
 const modul = require('./../src/bowling');
 
 describe('Bowling', () => {
+  describe('acceptance tests', () => {
+    it('12 rolls, 12 strikes - perfect game', () => {
+      expect(modul.score('+XXXXXXXXXXXX+')).to.equal(300);
+    });
+  });
+
   describe('calculates scores for a single roll', () => {
     it('only 9 pins', () => {
       expect(modul.score('9-')).to.equal(9);
