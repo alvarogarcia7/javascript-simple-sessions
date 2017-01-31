@@ -18,6 +18,9 @@ function noop() {
   return {
     score: function () {
       return 0;
+    },
+    modifier: function () {
+      return this;
     }
   };
 }
@@ -26,6 +29,9 @@ function simpleRoll(rollRepresentation) {
   return {
     score: function () {
       return Number(rollRepresentation);
+    },
+    modifier: function () {
+      return this;
     }
   };
 }
