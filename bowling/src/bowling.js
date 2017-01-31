@@ -30,7 +30,7 @@ function strike(rolls, currentIndex) {
   if (areThere2MoreRollsAfterStrike()) {
     const currentRoll = rolls[currentIndex + 3];
     if (!isNaN(currentRoll)) {
-      result += currentRoll;
+      result += Number(currentRoll);
     }
   }
   return result;

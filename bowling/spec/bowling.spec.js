@@ -32,7 +32,7 @@ describe('Bowling', () => {
       expect(modul.score('+X+9-')).to.equal(10+9+9);
     });
     it('including a strike, that doubles both throws on the next roll', () => {
-      expect(modul.score('+X+81')).to.equal((10+8+1)+(8+1));
+      expect(modul.score('+X+81')).to.equal(28);
     });
   });
 });
