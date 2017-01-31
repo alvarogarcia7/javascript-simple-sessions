@@ -10,17 +10,6 @@ function score(rolls) {
   }, 0);
 }
 
-function noop() {
-  return {
-    score: function () {
-      return 0;
-    },
-    modifier: function () {
-      return this;
-    }
-  };
-}
-
 function simpleRoll(rollRepresentation) {
   return {
     score: function () {
@@ -71,7 +60,9 @@ function toRolls(rollsRepresentation) {
   const rolls = [];
   for (let i=0; i<rollsRepresentation.length;) {
     const [roll, increment] = aNewRoll(rollsRepresentation, rollsRepresentation[i], i);
-    rolls.push(roll);
+    if (roll) {
+      rolls.push(roll);
+    }
     i += increment;
   }
 
@@ -83,7 +74,7 @@ function toRolls(rollsRepresentation) {
   return rolls;
 }
 function aNewRoll(rolls, char, currentIndex) {
-  let currentRoll = noop();
+  let currentRoll = undefined;
   let increment = 1;
   if (isNaN(Number(char))) {
     if (char === '/') {
