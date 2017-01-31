@@ -6,7 +6,11 @@ module.exports = {
 
 function score(rolls) {
   return toRolls(rolls).reduce((acc, currentRoll) => {
-    return addTo(currentRoll.score(), acc);
+    if (currentRoll['modifier']) {
+      return addTo(currentRoll.modifier().score(), acc);
+    } else {
+      return addTo(currentRoll.score(), acc);
+    }
   }, 0);
 }
 
@@ -81,9 +85,12 @@ function toRolls(rollsRepresentation) {
     i += increment;
   }
 
+  for (let i=0; i<rolls.length-1; i++) {
+    rolls[i].next = rolls[i+1];
+  }
+  rolls[rolls.length-1].next = undefined;
+
   return rolls;
-
-
 }
 function aNewRoll(rolls, char, currentIndex) {
   let currentRoll = noop();
