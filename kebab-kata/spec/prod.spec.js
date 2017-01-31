@@ -11,6 +11,7 @@ const meat =  {name: 'meat', isVegetarian: () => false, isPescatarian: () => fal
 const fish =  {name: 'fish', isVegetarian: () => false, isPescatarian: () => true};
 const cheese =  {name: 'cheese', isVegetarian: () => true, isPescatarian: () => true};
 const shrimp =  {name: 'shrimp', isVegetarian: () => false, isPescatarian: () => true};
+const onions =  {name: 'onions', isVegetarian: () => true, isPescatarian: () => true};
 const bbqSauce =  {name: 'bbqSauce', isVegetarian: () => false, isPescatarian: () => false};
 const oysterSauce=  {name: 'oysterSauce', isVegetarian: () => false, isPescatarian: () => true};
 const garlicSauce=  {name: 'garlicSauce', isVegetarian: () => true, isPescatarian: () => true};
@@ -63,6 +64,15 @@ describe('Kebab', () => {
   describe('acceptance tests', () => {
     it('fish is not vegetarian', () => {
       expect(Kebab.withIngredients(fish).isVegetarian()).to.eql(false);
+    });
+    it('onions can be removed', () => {
+      expect(Kebab.withIngredients(onions, meat).noOnions()).to.eql(Kebab.withIngredients(meat));
+    });
+
+    it('cheese can be doubled', () => {
+      const doubleCheeseKebab = Kebab.withIngredients(meat,cheese,cheese,meat)
+      console.log(doubleCheeseKebab)
+      expect(Kebab.withIngredients(meat,cheese,meat).doubleCheese()).to.eql(doubleCheeseKebab);
     });
   });
 

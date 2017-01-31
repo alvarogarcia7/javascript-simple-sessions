@@ -17,10 +17,20 @@ class Kebab {
     return this.ingredients.reduce((acc, element) => element.isPescatarian() && acc, true);
   }
   doubleCheese() {
-    return this;
+    const newIngredients = this.ingredients.flatMap(ingredient => {
+     if(ingredient.name === 'cheese') {
+      return [ingredient, ingredient];
+     } else {
+       return [ingredient];
+     }
+     });
+    const kebab = (new Kebab(newIngredients));
+    console.log(kebab);
+    return kebab;
   }
   noOnions() {
-    return this;
+    const newIngredients = this.ingredients.filter(ingredient => ingredient.name !== 'onions')
+    return new Kebab(newIngredients)
   }
 }
 
@@ -28,3 +38,8 @@ class Kebab {
 
 exports['default'] = Kebab;
 module.exports = exports['default'];
+
+
+Array.prototype.flatMap = function(lambda) {
+    return Array.prototype.concat.apply([], this.map(lambda));
+};
