@@ -48,7 +48,7 @@ function spare(rolls, currentIndex) {
   let result = 10 - Number(previousRoll);
   if (areThereMoreRolls()) {
     const nextRoll = rolls[currentIndex + 1];
-    result += Number(nextRoll);
+    result = addTo(Number(nextRoll), result);
   }
   return result;
 
