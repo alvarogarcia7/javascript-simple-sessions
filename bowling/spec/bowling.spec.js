@@ -28,5 +28,8 @@ describe('Bowling', () => {
     it('including a spare in last roll', () => {
       expect(modul.score('9-8/')).to.equal(19);
     });
+    it('including a strike, but a miss on the second throw', () => {
+      expect(modul.score('+X+9-')).to.equal(28);
+    });
   });
 });
