@@ -2,7 +2,11 @@
 
 class Kebab {
 
-  constructor(...ingredients) {
+  static aNew(...ingredients) {
+    return new Kebab(ingredients);
+  }
+
+  constructor(ingredients) {
     this.ingredients = ingredients;
   }
 
