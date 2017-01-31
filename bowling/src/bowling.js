@@ -21,8 +21,28 @@ function score(rolls) {
   }, 0);
 }
 
-function strike() {
-  return 10;
+function strike(rolls, currentIndex) {
+  let result = 10;
+  if (areThere1MoreRollsAfterStrike()) {
+    const nextRoll = rolls[currentIndex + 2];
+    result += Number(nextRoll);
+  }
+  if (areThere2MoreRollsAfterStrike()) {
+    const currentRoll = rolls[currentIndex + 3];
+    if (isNaN(currentRoll)) {
+    } else {
+      result += currentRoll;
+    }
+  }
+  return result;
+
+  function areThere1MoreRollsAfterStrike() {
+    return (currentIndex + 2) < rolls.length;
+  }
+
+  function areThere2MoreRollsAfterStrike() {
+    return (currentIndex + 3) < rolls.length;
+  }
 }
 
 function spare(rolls, currentIndex) {
