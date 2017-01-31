@@ -12,7 +12,7 @@ function score(rolls) {
         return addTo(spare(rolls, currentIndex).score(), acc);
       }
       if (char === 'X') {
-        return addTo(strike(rolls, currentIndex), acc);
+        return addTo(strike(rolls, currentIndex).score(), acc);
       }
       return acc;
     } else {
@@ -32,7 +32,12 @@ function strike(rolls, currentIndex) {
       result = addTo(Number(currentRoll), result);
     }
   }
-  return result;
+  
+  return {
+    score: function () {
+      return result;
+    }
+  };
 
   function areThere1MoreRollsAfterStrike() {
     return (currentIndex + 2) < rolls.length;
