@@ -20,49 +20,49 @@ const cheeseSauce =  {name: 'cheeseSauce ', isVegetarian: () => true, isPescatar
 describe('Kebab', () => {
   describe('is vegetarian', () => {
     it('by default', () => {
-      expect(Kebab.aNew().isVegetarian()).to.eql(true);
+      expect(Kebab.withIngredients().isVegetarian()).to.eql(true);
     });
   });
   describe('non vegetarian', () => {
     it('if it includes meat', () => {
-      expect(Kebab.aNew(meat).isVegetarian()).to.eql(false);
+      expect(Kebab.withIngredients(meat).isVegetarian()).to.eql(false);
     });
   });
   describe('pescatarian', () => {
     it('if it includes fish', () => {
-      expect(Kebab.aNew(fish).isPescatarian()).to.eql(true);
+      expect(Kebab.withIngredients(fish).isPescatarian()).to.eql(true);
     });
 
     it('if it includes shrimp', () => {
-      expect(Kebab.aNew(shrimp).isPescatarian()).to.eql(true);
+      expect(Kebab.withIngredients(shrimp).isPescatarian()).to.eql(true);
     });
 
     it('not if it includes meat', () => {
-      expect(Kebab.aNew(meat).isPescatarian()).to.eql(false);
+      expect(Kebab.withIngredients(meat).isPescatarian()).to.eql(false);
     });
   });
 
   describe('multiple ingredients', () => {
     it('keeps the vegetarian, pescatarian properties', () => {
-      expect(Kebab.aNew(fish,meat).isPescatarian()).to.eql(false);
-      expect(Kebab.aNew(fish,meat).isVegetarian()).to.eql(false);
+      expect(Kebab.withIngredients(fish,meat).isPescatarian()).to.eql(false);
+      expect(Kebab.withIngredients(fish,meat).isVegetarian()).to.eql(false);
     });
   });
 
   describe('sauces ingredients', () => {
     it('keeps the vegetarian, pescatarian properties', () => {
-      expect(Kebab.aNew(bbqSauce).isVegetarian()).to.eql(false);
-      expect(Kebab.aNew(bbqSauce).isPescatarian()).to.eql(false);
+      expect(Kebab.withIngredients(bbqSauce).isVegetarian()).to.eql(false);
+      expect(Kebab.withIngredients(bbqSauce).isPescatarian()).to.eql(false);
     });
     it('keeps the vegetarian, pescatarian properties', () => {
-      expect(Kebab.aNew(oysterSauce).isVegetarian()).to.eql(false);
-      expect(Kebab.aNew(oysterSauce).isPescatarian()).to.eql(true);
+      expect(Kebab.withIngredients(oysterSauce).isVegetarian()).to.eql(false);
+      expect(Kebab.withIngredients(oysterSauce).isPescatarian()).to.eql(true);
     });
   });
 
   describe('acceptance tests', () => {
     it('fish is not vegetarian', () => {
-      expect(Kebab.aNew(fish).isVegetarian()).to.eql(false);
+      expect(Kebab.withIngredients(fish).isVegetarian()).to.eql(false);
     });
   });
 

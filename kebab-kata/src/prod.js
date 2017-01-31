@@ -2,7 +2,7 @@
 
 class Kebab {
 
-  static aNew(...ingredients) {
+  static withIngredients(...ingredients) {
     return new Kebab(ingredients);
   }
 
