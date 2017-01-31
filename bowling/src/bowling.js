@@ -84,13 +84,12 @@ function toRolls(rollsRepresentation) {
 }
 function aNewRoll(rolls, char, currentIndex) {
   let currentRoll = undefined;
-  let increment = 1;
+  const increment = 1;
   if (isNaN(Number(char))) {
     if (char === '/') {
       currentRoll = spare(rolls, currentIndex);
     } else if (char === 'X') {
       currentRoll = strike();
-      increment = 2;
     }
   } else {
     currentRoll = simpleRoll(char);
