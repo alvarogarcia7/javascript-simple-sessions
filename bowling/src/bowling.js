@@ -10,15 +10,23 @@ function score(rolls) {
     if (isNaN(currentRoll)) {
       if (char === '/') {
         return addTo(spare(rolls, currentIndex).score(), acc);
-      }
-      if (char === 'X') {
+      } else if (char === 'X') {
         return addTo(strike(rolls, currentIndex).score(), acc);
+      } else {
+        return addTo(noop().score(), acc);
       }
-      return acc;
     } else {
       return addTo(simpleRoll(currentRoll).score(), acc);
     }
   }, 0);
+}
+
+function noop() {
+  return {
+    score: function () {
+      return 0;
+    }
+  };
 }
 
 function simpleRoll(roll) {
