@@ -30,32 +30,22 @@ function simpleRoll(rollRepresentation) {
   };
 }
 
-function strike(rolls, currentIndex) {
+function strike() {
   let result = 10;
-  if (areThere1MoreRollsAfterStrike()) {
-    const nextRoll = rolls[currentIndex + 2];
-    result = addTo(Number(nextRoll), result);
-  }
-  if (areThere2MoreRollsAfterStrike()) {
-    const currentRoll = rolls[currentIndex + 3];
-    if (!isNaN(currentRoll)) {
-      result = addTo(Number(currentRoll), result);
-    }
-  }
-
   return {
     score: function () {
       return result;
+    },
+    modifier: function () {
+      if (this.next) {
+        result = addTo(this.next.score(), result);
+        if (this.next.next) {
+          result = addTo(this.next.next.score(), result);
+        }
+      }
+      return this;
     }
   };
-
-  function areThere1MoreRollsAfterStrike() {
-    return (currentIndex + 2) < rolls.length;
-  }
-
-  function areThere2MoreRollsAfterStrike() {
-    return (currentIndex + 3) < rolls.length;
-  }
 }
 
 function spare(rolls, currentIndex) {
