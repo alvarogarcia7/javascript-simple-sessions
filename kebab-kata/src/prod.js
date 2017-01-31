@@ -1,8 +1,16 @@
 'use strict';
 
 class Kebab {
+
+  constructor(...ingredients) {
+    this.ingredients = ingredients;
+  }
+
   isVegetarian() {
-    return true;
+    return this.ingredients.reduce((acc, element) => element.isVegetarian() && acc, true);
+  }
+  isPescatarian() {
+    return this.ingredients.reduce((acc, element) => element.isPescatarian() && acc, true);
   }
 }
 
