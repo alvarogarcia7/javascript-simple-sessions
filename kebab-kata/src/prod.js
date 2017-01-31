@@ -12,7 +12,15 @@ class Kebab {
   isPescatarian() {
     return this.ingredients.reduce((acc, element) => element.isPescatarian() && acc, true);
   }
+  doubleCheese() {
+    return this;
+  }
+  noOnions() {
+    return this;
+  }
 }
+
+
 
 exports['default'] = Kebab;
 module.exports = exports['default'];
