@@ -16,10 +16,19 @@ function score(rolls) {
       }
       return acc;
     } else {
-      return addTo(currentRoll, acc);
+      return addTo(simpleRoll(currentRoll).score(), acc);
     }
   }, 0);
 }
+
+function simpleRoll(roll) {
+  return {
+    score: function () {
+      return roll;
+    }
+  };
+}
+
 function strike(rolls, currentIndex) {
   let result = 10;
   if (areThere1MoreRollsAfterStrike()) {
@@ -32,7 +41,7 @@ function strike(rolls, currentIndex) {
       result = addTo(Number(currentRoll), result);
     }
   }
-  
+
   return {
     score: function () {
       return result;
