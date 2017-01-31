@@ -7,14 +7,12 @@ module.exports = {
 function score(rolls) {
   return toRolls(rolls).reduce((acc, char, currentIndex) => {
     const currentRoll = Number(char);
-    let currentRollO;
+    let currentRollO = noop();
     if (isNaN(currentRoll)) {
       if (char === '/') {
         currentRollO = spare(rolls, currentIndex);
       } else if (char === 'X') {
         currentRollO = strike(rolls, currentIndex);
-      } else {
-        currentRollO = noop();
       }
     } else {
       currentRollO = simpleRoll(currentRoll);
