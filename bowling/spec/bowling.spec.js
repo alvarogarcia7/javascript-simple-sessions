@@ -34,5 +34,8 @@ describe('Bowling', () => {
     it('including a strike, that doubles both throws on the next roll', () => {
       expect(modul.score('+X+81')).to.equal(28);
     });
+    it('including a strike, that doubles both throws on the next roll', () => {
+      expect(modul.score('+XX+81')).to.equal((10+10+8)+(10+8+1)+(8+1));
+    });
   });
 });
