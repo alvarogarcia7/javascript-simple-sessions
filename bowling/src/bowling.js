@@ -91,14 +91,12 @@ function aNewRoll(rolls, char, currentIndex) {
   if (isNaN(Number(char))) {
     if (char === '/') {
       currentRoll = spare(rolls, currentIndex);
-      increment = 1;
     } else if (char === 'X') {
       currentRoll = strike(rolls, currentIndex);
       increment = 2;
     }
   } else {
     currentRoll = simpleRoll(char);
-    increment = 1;
   }
   return [currentRoll, increment];
 }
