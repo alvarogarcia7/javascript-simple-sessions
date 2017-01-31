@@ -5,7 +5,7 @@ module.exports = {
 };
 
 function score(rolls) {
-  return rolls.split('').reduce((acc, char, currentIndex) => {
+  return toFrames(rolls).reduce((acc, char, currentIndex) => {
     const currentRoll = Number(char);
     if (isNaN(currentRoll)) {
       if (char === '/') {
@@ -56,4 +56,8 @@ function spare(rolls, currentIndex) {
   function areThereMoreRolls() {
     return currentIndex < (rolls.length -1);
   }
+}
+
+function toFrames(rolls) {
+  return rolls.split('');
 }
