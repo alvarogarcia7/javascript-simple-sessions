@@ -6,17 +6,17 @@ module.exports = {
 
 function score(rolls) {
   return toRolls(rolls).reduce((acc, char, currentIndex) => {
-    let currentRollO = noop();
+    let currentRoll = noop();
     if (isNaN(Number(char))) {
       if (char === '/') {
-        currentRollO = spare(rolls, currentIndex);
+        currentRoll = spare(rolls, currentIndex);
       } else if (char === 'X') {
-        currentRollO = strike(rolls, currentIndex);
+        currentRoll = strike(rolls, currentIndex);
       }
     } else {
-      currentRollO = simpleRoll(char);
+      currentRoll = simpleRoll(char);
     }
-    return addTo(currentRollO.score(), acc);
+    return addTo(currentRoll.score(), acc);
   }, 0);
 }
 
