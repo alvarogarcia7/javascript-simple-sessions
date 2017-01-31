@@ -24,12 +24,12 @@ function strike(rolls, currentIndex) {
   let result = 10;
   if (areThere1MoreRollsAfterStrike()) {
     const nextRoll = rolls[currentIndex + 2];
-    result += Number(nextRoll);
+    result = addTo(Number(nextRoll), result);
   }
   if (areThere2MoreRollsAfterStrike()) {
     const currentRoll = rolls[currentIndex + 3];
     if (!isNaN(currentRoll)) {
-      result += Number(currentRoll);
+      result = addTo(Number(currentRoll), result);
     }
   }
   return result;
