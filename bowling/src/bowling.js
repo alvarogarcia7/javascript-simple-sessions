@@ -9,10 +9,10 @@ function score(rolls) {
     const currentRoll = Number(char);
     if (isNaN(currentRoll)) {
       if (char === '/') {
-        return acc + spare(rolls, currentIndex);
+        return addTo(spare(rolls, currentIndex), acc);
       }
       if (char === 'X') {
-        return acc + strike(rolls, currentIndex);
+        return addTo(strike(rolls, currentIndex), acc);
       }
       return acc;
     } else {
