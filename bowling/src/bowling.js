@@ -5,24 +5,9 @@ module.exports = {
 };
 
 function score(rolls) {
-  return toRolls(rolls).reduce((acc, char, currentIndex) => {
-    const currentRoll = aNewRoll(char, currentIndex);
+  return toRolls(rolls).reduce((acc, currentRoll) => {
     return addTo(currentRoll.score(), acc);
   }, 0);
-
-  function aNewRoll(char, currentIndex) {
-    let currentRoll = noop();
-    if (isNaN(Number(char))) {
-      if (char === '/') {
-        currentRoll = spare(rolls, currentIndex);
-      } else if (char === 'X') {
-        currentRoll = strike(rolls, currentIndex);
-      }
-    } else {
-      currentRoll = simpleRoll(char);
-    }
-    return currentRoll;
-  }
 }
 
 function noop() {
@@ -88,8 +73,34 @@ function spare(rolls, currentIndex) {
   }
 }
 
-function toRolls(rolls) {
-  return rolls.split('');
+function toRolls(rollsRepresentation) {
+  const rolls = [];
+  for (let i=0; i<rollsRepresentation.length;) {
+    const [roll, increment] = aNewRoll(rollsRepresentation, rollsRepresentation[i], i);
+    rolls.push(roll);
+    i += increment;
+  }
+
+  return rolls;
+
+
+}
+function aNewRoll(rolls, char, currentIndex) {
+  let currentRoll = noop();
+  let increment = 1;
+  if (isNaN(Number(char))) {
+    if (char === '/') {
+      currentRoll = spare(rolls, currentIndex);
+      increment = 1;
+    } else if (char === 'X') {
+      currentRoll = strike(rolls, currentIndex);
+      increment = 2;
+    }
+  } else {
+    currentRoll = simpleRoll(char);
+    increment = 1;
+  }
+  return [currentRoll, increment];
 }
 
 function addTo(roll, accumulated) {
