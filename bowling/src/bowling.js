@@ -16,11 +16,10 @@ function score(rolls) {
       }
       return acc;
     } else {
-      return currentRoll + acc;
+      return addTo(currentRoll, acc);
     }
   }, 0);
 }
-
 function strike(rolls, currentIndex) {
   let result = 10;
   if (areThere1MoreRollsAfterStrike()) {
@@ -60,4 +59,8 @@ function spare(rolls, currentIndex) {
 
 function toFrames(rolls) {
   return rolls.split('');
+}
+
+function addTo(frame, accumulated) {
+  return frame + accumulated;
 }
