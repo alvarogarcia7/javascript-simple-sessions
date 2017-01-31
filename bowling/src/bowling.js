@@ -14,29 +14,16 @@ function score(rolls) {
   }, 0);
 }
 
-function simpleThrow(firstThrow, secondThrow) {
+function simpleThrow(firstThrow) {
   return {
     score: function () {
-      return Number(firstThrow) + Number(secondThrow);
+      return Number(firstThrow);
     },
-    rollModifier: function () {
-      return this;
-    }
   };
 }
 
 function strike(rolls, currentIndex) {
   let result = 10;
-  if (areThere1MoreRollsAfterStrike()) {
-    const nextRoll = rolls[currentIndex + 2];
-    result = addTo(Number(nextRoll), result);
-  }
-  if (areThere2MoreRollsAfterStrike()) {
-    const currentRoll = rolls[currentIndex + 3];
-    if (!isNaN(currentRoll)) {
-      result = addTo(Number(currentRoll), result);
-    }
-  }
 
   return {
     score: function () {
@@ -45,18 +32,13 @@ function strike(rolls, currentIndex) {
     rollModifier: function () {
       if (this.next) {
         result = addTo(this.next.score(), result);
+        if (this.next.next) {
+          result = addTo(this.next.next.score(), result);
+        }
       }
       return this;
     }
   };
-
-  function areThere1MoreRollsAfterStrike() {
-    return (currentIndex + 2) < rolls.length;
-  }
-
-  function areThere2MoreRollsAfterStrike() {
-    return (currentIndex + 3) < rolls.length;
-  }
 }
 
 function spare(rolls, currentIndex) {
@@ -80,16 +62,10 @@ function spare(rolls, currentIndex) {
 
 function toRolls(rollsRepresentation) {
   const rolls = [];
-  let previousThrow = undefined;
   for (let i=0; i<rollsRepresentation.length;) {
-    const [throww, increment] = aNewThrow(rollsRepresentation, rollsRepresentation[i], i);
-    if (throww) {
-      if(!previousThrow){
-        previousThrow = throww;
-      } else {
-        rolls.push(roll(previousThrow, throww));
-        previousThrow = undefined;
-      }
+    const [roll, increment] = aNewRoll(rollsRepresentation, rollsRepresentation[i], i);
+    if (roll) {
+      rolls.push(roll);
     }
     i += increment;
   }
@@ -97,19 +73,12 @@ function toRolls(rollsRepresentation) {
   for(let i=0; i<rolls.length-1; i++) {
     rolls[i].next = rolls[i+1];
   }
+  rolls[rolls.length -1].next = undefined;
 
   return rolls;
 }
 
-function roll(firstThrow, secondThrow) {
-  return {
-    score: function() {
-      addTo(firstThrow.score(), secondThrow.score());
-    }
-  }
-}
-
-function aNewThrow(rolls, char, currentIndex) {
+function aNewRoll(rolls, char, currentIndex) {
   let currentThrow = undefined;
   let increment = 1;
   if (isNaN(Number(char))) {
@@ -117,6 +86,7 @@ function aNewThrow(rolls, char, currentIndex) {
       currentThrow = spare(rolls, currentIndex);
     } else if (char === 'X') {
       currentThrow = strike(rolls, currentIndex);
+      increment=2;
     }
   } else {
     currentThrow = simpleThrow(char);
