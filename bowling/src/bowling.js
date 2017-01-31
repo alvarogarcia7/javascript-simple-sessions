@@ -57,24 +57,29 @@ function spare(rolls, currentIndex) {
 }
 
 function toRolls(rollsRepresentation) {
-  const rolls = [];
-  for (let i=0; i<rollsRepresentation.length;) {
-    const [roll, increment] = aNewRoll(rollsRepresentation, rollsRepresentation[i], i);
-    if (roll) {
-      rolls.push(roll);
-    }
-    i += increment;
-  }
-
-  linkRolls();
-
+  const rolls = readRolls();
   return rolls;
 
-  function linkRolls() {
+  function readRolls() {
+    const rolls = [];
+    for (let i = 0; i < rollsRepresentation.length;) {
+      const [roll, increment] = aNewRoll(rollsRepresentation, rollsRepresentation[ i ], i);
+      if (roll) {
+        rolls.push(roll);
+      }
+      i += increment;
+    }
+
+    return linkRolls(rolls);
+  }
+
+  function linkRolls(rolls) {
     for (let i = 0; i < rolls.length - 1; i++) {
       rolls[i].next = rolls[i + 1];
     }
     rolls[rolls.length - 1].next = undefined;
+
+    return rolls;
   }
 }
 function aNewRoll(rolls, char, currentIndex) {
