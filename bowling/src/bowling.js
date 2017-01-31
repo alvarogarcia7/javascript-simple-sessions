@@ -80,7 +80,7 @@ function aNewRoll(rolls, char, currentIndex) {
     if (char === '/') {
       currentRoll = spare(rolls, currentIndex);
     } else if (char === 'X') {
-      currentRoll = strike(rolls, currentIndex);
+      currentRoll = strike();
       increment = 2;
     }
   } else {
