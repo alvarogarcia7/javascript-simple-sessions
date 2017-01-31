@@ -9,7 +9,7 @@ function score(rolls) {
     const currentRoll = Number(char);
     if (isNaN(currentRoll)) {
       if (char === '/') {
-        return addTo(spare(rolls, currentIndex), acc);
+        return addTo(spare(rolls, currentIndex).score(), acc);
       }
       if (char === 'X') {
         return addTo(strike(rolls, currentIndex), acc);
@@ -50,7 +50,12 @@ function spare(rolls, currentIndex) {
     const nextRoll = rolls[currentIndex + 1];
     result = addTo(Number(nextRoll), result);
   }
-  return result;
+
+  return {
+    score: function () {
+      return result;
+    }
+  };
 
   function areThereMoreRolls() {
     return currentIndex < (rolls.length -1);
