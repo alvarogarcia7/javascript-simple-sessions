@@ -6,11 +6,7 @@ module.exports = {
 
 function score(rolls) {
   return toRolls(rolls).reduce((acc, currentRoll) => {
-    if (currentRoll['modifier']) {
-      return addTo(currentRoll.modifier().score(), acc);
-    } else {
-      return addTo(currentRoll.score(), acc);
-    }
+    return addTo(currentRoll.modifier().score(), acc);
   }, 0);
 }
 
