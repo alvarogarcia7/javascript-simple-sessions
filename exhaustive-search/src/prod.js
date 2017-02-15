@@ -13,6 +13,9 @@ const expansion = (tree) => {
 const reduction = (tree, children) => {
   return children.reduce((acc, ele) => acc+ele, tree.node);
 }
+// Execute as
+// var exhaustive = require('./src/prod.js')
+// exhaustive.search(exhaustive.expansion, exhaustive.reduction).search(exhaustive.tree)
 
 module.exports = {search, tree, expansion, reduction};
 
