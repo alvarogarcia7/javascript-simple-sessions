@@ -8,7 +8,7 @@ const ExhaustiveSearch = require('./../src/prod').ExhaustiveSearch;
 
 describe('Exhaustive search', () => {
   const tree = {left: {left: {node: 3}, node: 2, right: {node: 4}}, node: 1, right: {left: {node: 6}, node: 5, right:{node: 7}}};
-  const bothChildren = (tree) => { 
+  const bothChildrenWhenPresent = (tree) => { 
     return [tree.left, tree.right].filter(child=>child);
   };
 
@@ -19,7 +19,7 @@ describe('Exhaustive search', () => {
     };
 
     it('with addition', () => {
-      expect(new ExhaustiveSearch(bothChildren, addition).search(tree)).to.equal(28);
+      expect(new ExhaustiveSearch(bothChildrenWhenPresent, addition).search(tree)).to.equal(28);
     });
   });
 
