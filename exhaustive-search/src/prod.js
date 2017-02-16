@@ -1,23 +1,4 @@
 'use strict';
-const tree = {left: {left: {node: 3}, node: 2, right: {node: 4}}, node: 1, right: {left: {node: 6}, node: 5, right:{node: 7}}}
-const expansion = (tree) => { 
-  const children = [];
-  if(tree.left) {
-    children.push(tree.left);
-  }
-  if(tree.right) {
-    children.push(tree.right);
-  }
-  return children;
-}
-const reduction = (tree, children) => {
-  return children.reduce((acc, ele) => acc+ele, tree.node);
-}
-// Execute as
-// var exhaustive = require('./src/prod.js')
-// exhaustive.search(exhaustive.expansion, exhaustive.reduction).search(exhaustive.tree)
-
-module.exports = {search, tree, expansion, reduction};
 
 class ExhaustiveSearch {
 
@@ -32,6 +13,4 @@ class ExhaustiveSearch {
   }
 }
 
-function search(expansion, reduction) {
-  return new ExhaustiveSearch(expansion, reduction);
-}
+module.exports = {ExhaustiveSearch};
