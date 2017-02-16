@@ -14,7 +14,8 @@ describe('Exhaustive search', () => {
 
   describe('traverses the whole tree', () => {
     const reduction = (tree, children) => {
-      return tree.node + children.reduce((acc, ele) => acc+ele, 0);
+      const sumOfChildren = children.reduce((acc, ele) => acc+ele, 0);
+      return tree.node + sumOfChildren;
     };
 
     it('with addition', () => {
