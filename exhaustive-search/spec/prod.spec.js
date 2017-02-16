@@ -9,9 +9,7 @@ const ExhaustiveSearch = require('./../src/prod').ExhaustiveSearch;
 describe('Exhaustive search', () => {
   const tree = {left: {left: {node: 3}, node: 2, right: {node: 4}}, node: 1, right: {left: {node: 6}, node: 5, right:{node: 7}}};
   const expansion = (tree) => { 
-    const children = [];
-    [tree.left, tree.right].filter(child=>child).forEach(child=>children.push(child));
-    return children;
+    return [tree.left, tree.right].filter(child=>child);
   };
 
   describe('traverses the whole tree', () => {
