@@ -7,6 +7,9 @@ chai.config.includeStack = true;
 const ExhaustiveSearch = require('./../src/prod').ExhaustiveSearch;
 
 describe('Exhaustive search', () => {
+  //   1
+  // 2    5
+  //3 4  6 7
   const tree = {left: {left: {node: 3}, node: 2, right: {node: 4}}, node: 1, right: {left: {node: 6}, node: 5, right:{node: 7}}};
   const bothChildrenWhenPresent = (tree) => { 
     return [tree.left, tree.right].filter(child=>child);
