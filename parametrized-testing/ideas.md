@@ -124,7 +124,7 @@ describe('adding to a list', ()=>{
 
   function pushingToMatches(input, parameter) {
     const newArray = input.push(parameter);
-    return {matches = expected => expect(newArray).to.deep.equal(expected)};
+    return {matches: expected => expect(newArray).to.deep.equal(expected)};
   }
 });
 ```
