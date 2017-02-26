@@ -81,6 +81,12 @@ describe('adding to a list', ()=>{
 });
 ```
 
+|Pros|Cons|
+|----|----|
+||one test per case|
+|the test is self-contained (DAMP)||
+
+
 ## Using `it`, DRY
 
 ```javascript
