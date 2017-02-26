@@ -123,6 +123,7 @@ describe('adding to a list', ()=>{
 
 |Pros|Cons|
 |----|----|
+||one test per case|
 |no repeated code||
 ||the testing method `pushingToMatches` requires access to all test inputs and outputs|
 ||the testing method `pushingToMatches` breaks the SRP: act and assert| 
