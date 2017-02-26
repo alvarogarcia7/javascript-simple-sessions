@@ -44,7 +44,8 @@ describe('adding to a list', ()=>{
 
 | Pros | Cons |
 |------|-----|
-|flexible||    
+|flexible||
+|flexible to use any `testCase` variable name||
 ||verbose|    
 |using the real test syntax|
 ||duplicate the test runner in every case|
