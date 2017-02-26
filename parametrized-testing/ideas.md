@@ -81,6 +81,30 @@ describe('adding to a list', ()=>{
 });
 ```
 
+## Using `it`, DRY
+
+```javascript
+describe('adding to a list', ()=>{
+  it('to an empty list', () => {
+    const input= [];
+    const parameter= 2;
+    const expected= [2];
+    // use explaining variables
+    pushingToMatches(input, parameter, expected);
+  });
+
+  it('to a non-empty list', () => {
+    // not using explaining variables
+    pushingToMatches([1], 2, [1 2]);
+  });
+
+  function pushingToMatches(input, parameter, expected) {
+    const newArray = input.push(parameter);
+    expect(newArray).to.deep.equal(expected);
+  }
+});
+```
+
 ## Sources
 
 * https://rjzaworski.com/2013/01/parameterized-testing-in-javascript
