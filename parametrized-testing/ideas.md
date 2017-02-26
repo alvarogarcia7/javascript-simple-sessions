@@ -90,15 +90,15 @@ describe('adding to a list', ()=>{
     const parameter= 2;
     const expected= [2];
     // use explaining variables
-    pushingToMatches(input, parameter, expected);
+    pushingToMatches(parameter, input, expected);
   });
 
   it('to a non-empty list', () => {
     // not using explaining variables
-    pushingToMatches([1], 2, [1, 2]);
+    pushingToMatches(2, [1], [1, 2]);
   });
 
-  function pushingToMatches(input, parameter, expected) {
+  function pushingToMatches(parameter, input, expected) {
     const newArray = input.push(parameter);
     expect(newArray).to.deep.equal(expected);
   }
@@ -114,15 +114,15 @@ describe('adding to a list', ()=>{
     const parameter= 2;
     const expected= [2];
     // use explaining variables
-    pushingTo(input, parameter).matches(expected);
+    pushingTo(parameter, input).matches(expected);
   });
 
   it('to a non-empty list', () => {
     // not using explaining variables
-    pushingTo([1], 2).matches([1, 2]);
+    pushingTo(2, [1]).matches([1, 2]);
   });
 
-  function pushingToMatches(input, parameter) {
+  function pushingTo(parameter, input) {
     const newArray = input.push(parameter);
     return {matches: expected => expect(newArray).to.deep.equal(expected)};
   }
