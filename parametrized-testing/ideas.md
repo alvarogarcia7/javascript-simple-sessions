@@ -67,8 +67,8 @@ describe('adding to a list', ()=>{
     const input= [];
     const parameter= 2;
     const expected= [2];
-    const newArray = input.push(parameter);
-    expect(newArray).to.deep.equal(expected);
+    input.push(parameter);
+    expect(input).to.deep.equal(expected);
   });
 
   it('to a non-empty list', () => {
