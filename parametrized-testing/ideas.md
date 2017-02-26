@@ -4,6 +4,8 @@ Note: the example used below (adding to an array) is simple enough to be underst
 
 In this session, we explore how to use parametrized tests ([example in java][example-java], [example in c#][example-csharp])
 
+The tests are written using `mocha` syntax: `describe`, `it`. Using `chai` for expectations: `assert`.
+
 ## Using a custom syntax
 
 This is just an example of some possible syntax, not using any (currently) existing framework.
