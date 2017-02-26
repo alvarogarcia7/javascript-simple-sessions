@@ -51,3 +51,9 @@ describe('adding to a list', ()=>{
 ||duplicate the test runner in every case|
 ||test-related features mixed with business/domain tests|
 
+
+## Sources
+
+* https://rjzaworski.com/2013/01/parameterized-testing-in-javascript
+* http://www.adequatelygood.com/Writing-Testable-JavaScript.html
+
