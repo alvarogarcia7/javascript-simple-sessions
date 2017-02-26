@@ -1,3 +1,7 @@
+# Comparing options for a parametrized testing in javascript
+
+Note: the example used below (adding to an array) is simple enough to be understood by everybody, without having to explain the domain. The real tests can have a more complicated environment or domain. This is just an example.
+
 ## Using a custom syntax
 
 ```javascript
