@@ -42,4 +42,8 @@ describe('adding to a list', ()=>{
 })
 ```
 
+| Pros | Cons |
+|------|-----|
+|flexible||    
+||verbose|    
 
