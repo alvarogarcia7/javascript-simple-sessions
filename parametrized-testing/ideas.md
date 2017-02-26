@@ -9,7 +9,7 @@ describe('adding to a list', ()=>{
   newTestCase({description: 'to a non-empty list',
                input: [1],
                parameter: 2,
-               expected: [1 2]})
+               expected: [1, 2]})
 
   it(`${testCase.description}`, () => {
     const newArray = testCase.input.push(testCase.parameter)
@@ -39,7 +39,7 @@ describe('adding to a list', ()=>{
                {description: 'to a non-empty list',
                input: [1],
                parameter: 2,
-               expected: [1 2]}]
+               expected: [1, 2]}]
 
   runs.forEach(testCase => {
     it(`${testCase.description}`, () => {
@@ -74,7 +74,7 @@ describe('adding to a list', ()=>{
   it('to a non-empty list', () => {
     const input= [1];
     const parameter= 2;
-    const expected= [1 2];
+    const expected= [1, 2];
     const newArray = input.push(parameter);
     expect(newArray).to.deep.equal(expected);
   });
@@ -95,7 +95,7 @@ describe('adding to a list', ()=>{
 
   it('to a non-empty list', () => {
     // not using explaining variables
-    pushingToMatches([1], 2, [1 2]);
+    pushingToMatches([1], 2, [1, 2]);
   });
 
   function pushingToMatches(input, parameter, expected) {
