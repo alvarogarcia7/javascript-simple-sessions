@@ -21,3 +21,4 @@ describe('adding to a list', ()=>{
 ||verbose|    
 ||too close to the the real test syntax?|
 ||how to explain that the `it` will execute all test cases?|
+||magic variable `testCase`|
