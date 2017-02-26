@@ -141,6 +141,13 @@ describe('adding to a list', ()=>{
 });
 ```
 
+|Pros|Cons|
+|----|----|
+|no repeated code||
+|readable||
+||verbose, one test per case, when this could be expressed in some other way|
+||the testing method `pushingTo` creates space for the difference in act and assert|
+
 
 ## Sources
 
