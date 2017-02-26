@@ -105,8 +105,8 @@ describe('adding to a list', ()=>{
   });
 
   function pushingToMatches(parameter, input, expected) {
-    const newArray = input.push(parameter);
-    expect(newArray).to.deep.equal(expected);
+    input.push(parameter);
+    expect(input).to.deep.equal(expected);
   }
 });
 ```
