@@ -15,3 +15,9 @@ describe('adding to a list', ()=>{
 ```
 
 
+| Pros | Cons |
+|------|-----|
+|flexible||    
+||verbose|    
+||too close to the the real test syntax?|
+
