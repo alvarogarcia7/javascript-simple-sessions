@@ -20,4 +20,4 @@ describe('adding to a list', ()=>{
 |flexible||    
 ||verbose|    
 ||too close to the the real test syntax?|
-
+||how to explain that the `it` will execute all test cases?|
