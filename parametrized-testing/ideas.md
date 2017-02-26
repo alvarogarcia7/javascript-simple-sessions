@@ -119,7 +119,7 @@ describe('adding to a list', ()=>{
 
   it('to a non-empty list', () => {
     // not using explaining variables
-    pushingToMatches([1], 2).matches([1, 2]);
+    pushingTo([1], 2).matches([1, 2]);
   });
 
   function pushingToMatches(input, parameter) {
