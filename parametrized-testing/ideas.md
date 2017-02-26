@@ -2,6 +2,8 @@
 
 Note: the example used below (adding to an array) is simple enough to be understood by everybody, without having to explain the domain. The real tests can have a more complicated environment or domain. This is just an example.
 
+In this session, we explore how to use parametrized tests ([example in java][example-java], [example in c#][example-csharp])
+
 ## Using a custom syntax
 
 ```javascript
@@ -157,4 +159,10 @@ describe('adding to a list', ()=>{
 
 * https://rjzaworski.com/2013/01/parameterized-testing-in-javascript
 * http://www.adequatelygood.com/Writing-Testable-JavaScript.html
+* Example in java: [here][example-java]
+* Example in C#: [here][example-csharp]
+
+
+[example-java]: https://github.com/junit-team/junit4/wiki/Parameterized-tests
+[example-csharp]: https://jeremybytes.blogspot.co.uk/2014/10/parameterized-tests-with-nunit.html
 
