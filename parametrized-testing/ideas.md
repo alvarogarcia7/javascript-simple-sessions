@@ -46,4 +46,7 @@ describe('adding to a list', ()=>{
 |------|-----|
 |flexible||    
 ||verbose|    
+|using the real test syntax|
+||duplicate the test runner in every case|
+||test-related features mixed with business/domain tests|
 
