@@ -43,8 +43,8 @@ describe('adding to a list', ()=>{
 
   runs.forEach(testCase => {
     it(`${testCase.description}`, () => {
-      const newArray = testCase.input.push(testCase.parameter)
-      expect(newArray).to.deep.equal(testCase.expected)
+      testCase.input.push(testCase.parameter)
+      expect(testCase.input).to.deep.equal(testCase.expected)
     })
   }
 })
