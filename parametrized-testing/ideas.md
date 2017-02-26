@@ -6,6 +6,10 @@ describe('adding to a list', ()=>{
                input: [],
                parameter: 2,
                expected: [2]})
+  newTestCase({description: 'to a non-empty list',
+               input: [1],
+               parameter: 2,
+               expected: [1 2]})
 
   it(`${testCase.description}`, () => {
     const newArray = testCase.input.push(testCase.parameter)
@@ -31,7 +35,11 @@ describe('adding to a list', ()=>{
   const runs = [{description: 'to an empty list',
                input: [],
                parameter: 2,
-               expected: [2]}]
+               expected: [2]},
+               {description: 'to a non-empty list',
+               input: [1],
+               parameter: 2,
+               expected: [1 2]}]
 
   runs.forEach(testCase => {
     it(`${testCase.description}`, () => {
