@@ -6,6 +6,8 @@ In this session, we explore how to use parametrized tests ([example in java][exa
 
 ## Using a custom syntax
 
+This is just an example of some possible syntax, not using any (currently) existing framework.
+
 ```javascript
 describe('adding to a list', ()=>{
   newTestCase({description: 'to an empty list',
