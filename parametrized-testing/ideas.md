@@ -28,7 +28,7 @@ describe('adding to a list', ()=>{
 
 ```javascript
 describe('adding to a list', ()=>{
-  var runs = [{description: 'to an empty list',
+  const runs = [{description: 'to an empty list',
                input: [],
                parameter: 2,
                expected: [2]}]
