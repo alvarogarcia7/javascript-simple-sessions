@@ -12,8 +12,8 @@ describe('adding to a list', ()=>{
                expected: [1, 2]})
 
   it(`${testCase.description}`, () => {
-    const newArray = testCase.input.push(testCase.parameter)
-    expect(newArray).to.deep.equal(testCase.expected)
+    testCase.input.push(testCase.parameter)
+    expect(testCase.input).to.deep.equal(testCase.expected)
   })
 })
 ```
