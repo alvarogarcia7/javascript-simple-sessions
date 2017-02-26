@@ -59,6 +59,27 @@ describe('adding to a list', ()=>{
 ||duplicate the test runner in every case|
 ||test-related features mixed with business/domain tests|
 
+## Using `it`, DAMP
+
+```javascript
+describe('adding to a list', ()=>{
+  it('to an empty list', () => {
+    const input= [];
+    const parameter= 2;
+    const expected= [2];
+    const newArray = input.push(parameter);
+    expect(newArray).to.deep.equal(expected);
+  });
+
+  it('to a non-empty list', () => {
+    const input= [1];
+    const parameter= 2;
+    const expected= [1 2];
+    const newArray = input.push(parameter);
+    expect(newArray).to.deep.equal(expected);
+  });
+});
+```
 
 ## Sources
 
