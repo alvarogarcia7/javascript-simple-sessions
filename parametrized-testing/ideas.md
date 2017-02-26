@@ -154,6 +154,7 @@ describe('adding to a list', ()=>{
 
 |Pros|Cons|
 |----|----|
+||one test per case|
 |no repeated code||
 |readable||
 ||verbose, one test per case, when this could be expressed in some other way|
