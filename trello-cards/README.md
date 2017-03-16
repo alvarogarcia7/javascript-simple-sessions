@@ -6,8 +6,10 @@ More information: see the blog post entry
 ```javascript
 var selectedCards = [...$('div.list-card')])
 
+var removePrefix = card => renameCard(card, (title) => title.substring(4))
+
 // WARNING: this performs the modification
-//selectedCards.forEach(card => renameCard(card, (title) => title.substring(4)))
+//selectedCards.forEach(removePrefix)
 ```
 
 You can also filter the cards to which apply the modification:
