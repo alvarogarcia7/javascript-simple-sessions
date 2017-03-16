@@ -1,5 +1,7 @@
 # Rename Trello card titles
 
+More information: see the blog post entry
+
 
 ```javascript
 var selectedCards = [...$('div.list-card')])
