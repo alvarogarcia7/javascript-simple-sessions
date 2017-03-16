@@ -4,6 +4,8 @@ More information: see the blog post entry
 
 
 ```javascript
+//Remember to load into the console the existing code
+
 var selectedCards = [...$('div.list-card')])
 
 var removePrefix = card => renameCard(card, (title) => title.substring(4))
