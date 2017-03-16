@@ -1,6 +1,6 @@
 # Rename Trello card titles
 
-More information: see the blog post entry
+More information: see the [blog post entry](https://alvarogarcia7.github.io/blog/2017/03/16/modifying-titles-in-a-trello-board/)
 
 
 ```javascript
